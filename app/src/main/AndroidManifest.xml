@@ -23,7 +23,9 @@
         <activity android:name=".Messages" />
         <activity android:name=".Photos" />
         <activity android:name=".EventPhotos" />
-        <activity android:name=".MemberDetails"></activity>
+        <activity android:name=".MemberDetails" />
+        <activity android:name=".AddFamilyMember" />
+        <activity android:name=".MessageContent"></activity>
     </application>
 
 </manifest>

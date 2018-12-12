@@ -1,5 +1,6 @@
 package com.example.kasia.mobilefamily;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,8 +21,6 @@ public class Messages extends AppCompatActivity {
         setContentView(R.layout.activity_messages);
 
         loadGroups();
-
-
 
         TextView groupsButton = (TextView) findViewById(R.id.groups);
         groupsButton.setOnClickListener(new View.OnClickListener(){
@@ -69,6 +68,11 @@ public class Messages extends AppCompatActivity {
     }
 
     public void openMessager(String groupName){
+        Intent intent = new Intent(this, MessageContent.class);
+        Bundle dataBundle = new Bundle();
+        dataBundle.putString("groupName", groupName);
+        intent.putExtras(dataBundle);
+        startActivity(intent);
 
     }
 }

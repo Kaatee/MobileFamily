@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class FamilyMemberData extends AppCompatActivity {
@@ -27,6 +28,14 @@ public class FamilyMemberData extends AppCompatActivity {
         });
 
 
+        Button addMemberButton = (Button) findViewById(R.id.button2);
+        addMemberButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                openAddFamilyMemberActivity();
+            }
+        });
 
     }
 
@@ -35,6 +44,11 @@ public class FamilyMemberData extends AppCompatActivity {
         Bundle dataBundle = new Bundle();
         dataBundle.putString("name", name);
         intent.putExtras(dataBundle);
+        startActivity(intent);
+    }
+
+    public void openAddFamilyMemberActivity(){
+        Intent intent = new Intent(this, AddFamilyMember.class);
         startActivity(intent);
     }
 }
