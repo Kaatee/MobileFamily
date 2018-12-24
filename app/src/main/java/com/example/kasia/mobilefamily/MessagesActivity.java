@@ -6,11 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Messages extends AppCompatActivity {
+public class MessagesActivity extends AppCompatActivity {
 
     String[] groups = new String[] {"rodzeństwo", "bracia", "dziadki", "kuzynostwo","organizacja rocznicy"};
     String[] people = new String[] {"Janina Kowalska", "Jan Kowalski", "Kazimierz Nowak", "Katarzyna Jozwiak"};
@@ -22,7 +21,7 @@ public class Messages extends AppCompatActivity {
 
         loadGroups();
 
-        TextView groupsButton = (TextView) findViewById(R.id.groups);
+        TextView groupsButton =  findViewById(R.id.groups);
         groupsButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -32,7 +31,7 @@ public class Messages extends AppCompatActivity {
         });
 
 
-        TextView peopleButton = (TextView) findViewById(R.id.people);
+        TextView peopleButton =  findViewById(R.id.people);
         peopleButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -43,8 +42,8 @@ public class Messages extends AppCompatActivity {
     }
 
     public void loadGroups(){
-        ListView groupsListView = (ListView) findViewById(R.id.listView2);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.photos_list_item,R.id.textView6, groups);
+        ListView groupsListView = findViewById(R.id.listView2);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.photos_list_item,R.id.textView6, groups);
         groupsListView.setAdapter(adapter);
         groupsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,8 +54,8 @@ public class Messages extends AppCompatActivity {
     }
 
     public void loadPeople(){
-        ListView groupsListView = (ListView) findViewById(R.id.listView2);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.photos_list_item,R.id.textView6, people);
+        ListView groupsListView = findViewById(R.id.listView2);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.photos_list_item,R.id.textView6, people);
         groupsListView.setAdapter(adapter);
         groupsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,7 +67,7 @@ public class Messages extends AppCompatActivity {
     }
 
     public void openMessager(String groupName){
-        Intent intent = new Intent(this, MessageContent.class);
+        Intent intent = new Intent(this, MessageContentActivity.class);
         Bundle dataBundle = new Bundle();
         dataBundle.putString("groupName", groupName);
         intent.putExtras(dataBundle);

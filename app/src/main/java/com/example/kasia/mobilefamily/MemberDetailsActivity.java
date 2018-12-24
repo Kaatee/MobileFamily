@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MemberDetails extends AppCompatActivity {
+public class MemberDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +17,11 @@ public class MemberDetails extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String name = extras.getString("name");
 
-        TextView textView = (TextView) findViewById(R.id.name);
+        TextView textView =  findViewById(R.id.name);
         textView.setText(name);
 
 
-        Button addMemberButton = (Button) findViewById(R.id.button3);
+        Button addMemberButton =  findViewById(R.id.button3);
         addMemberButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -32,7 +32,7 @@ public class MemberDetails extends AppCompatActivity {
     }
 
     public void openAddFamilyMemberActivity(){
-        Intent intent = new Intent(this, AddFamilyMember.class);
+        Intent intent = new Intent(this, AddFamilyMemberActivity.class);
         startActivity(intent);
     }
 

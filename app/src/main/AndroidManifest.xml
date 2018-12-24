@@ -16,16 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu" />
-        <activity android:name=".FamilyMemberData" />
-        <activity android:name=".FamilyTree" />
-        <activity android:name=".Timetable" />
-        <activity android:name=".Messages" />
-        <activity android:name=".Photos" />
-        <activity android:name=".EventPhotos" />
-        <activity android:name=".MemberDetails" />
-        <activity android:name=".AddFamilyMember" />
-        <activity android:name=".MessageContent"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".ListFamilyMembersActivity" />
+        <activity android:name=".FamilyTreeActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".MessagesActivity" />
+        <activity android:name=".PhotosActivity" />
+        <activity android:name=".EventPhotosActivity" />
+        <activity android:name=".MemberDetailsActivity" />
+        <activity android:name=".AddFamilyMemberActivity" />
+        <activity android:name=".MessageContentActivity"></activity>
     </application>
 
 </manifest>

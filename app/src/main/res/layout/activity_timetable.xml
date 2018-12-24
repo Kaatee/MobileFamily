@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kasia.mobilefamily.Timetable">
+    tools:context="com.example.kasia.mobilefamily.CalendarActivity">
 
     <CalendarView
         android:id="@+id/calendarView"

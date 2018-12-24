@@ -7,9 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class Photos extends AppCompatActivity {
+public class PhotosActivity extends AppCompatActivity {
 
     //list of events
     String items[] = new String[] {"urodziny Janiny", "rocznica slubu Kowalskich", "roczek Krzysia", "zjazd rodzinny"};
@@ -19,8 +18,8 @@ public class Photos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
 
-        ListView eventsListView = (ListView) findViewById(R.id.listViewPhotos);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.photos_list_item,R.id.textView6, items);
+        ListView eventsListView =  findViewById(R.id.listViewPhotos);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.photos_list_item,R.id.textView6, items);
         eventsListView.setAdapter(adapter);
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -33,7 +32,7 @@ public class Photos extends AppCompatActivity {
     }
 
     public void openEventPhotoActivity(String eventName){
-        Intent intent = new Intent(this, EventPhotos.class);
+        Intent intent = new Intent(this, EventPhotosActivity.class);
         Bundle dataBundle = new Bundle();
         dataBundle.putString("eventName", eventName);
         intent.putExtras(dataBundle);

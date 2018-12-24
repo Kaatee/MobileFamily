@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class Menu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         //go to family members data view
-        ConstraintLayout familyMembersDataButton = (ConstraintLayout) findViewById(R.id.constraintLayout11);
+        ConstraintLayout familyMembersDataButton = findViewById(R.id.constraintLayout11);
         familyMembersDataButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -24,7 +24,7 @@ public class Menu extends AppCompatActivity {
         });
 
         //go to family tree view
-        ConstraintLayout familyTreeDataButton = (ConstraintLayout) findViewById(R.id.constraintLayout10);
+        ConstraintLayout familyTreeDataButton =  findViewById(R.id.constraintLayout10);
         familyTreeDataButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -34,17 +34,17 @@ public class Menu extends AppCompatActivity {
         });
 
         //go to callender view
-        ConstraintLayout callenderViewButton = (ConstraintLayout) findViewById(R.id.constraintLayout13);
-        callenderViewButton.setOnClickListener(new View.OnClickListener(){
+        ConstraintLayout calendarViewButton = findViewById(R.id.constraintLayout13);
+        calendarViewButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                openCallenderActivity();
+                openCalendarActivity();
             }
         });
 
         //go to messages view
-        ConstraintLayout messagesViewButton = (ConstraintLayout) findViewById(R.id.constraintLayout12);
+        ConstraintLayout messagesViewButton = findViewById(R.id.constraintLayout12);
         messagesViewButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -54,7 +54,7 @@ public class Menu extends AppCompatActivity {
         });
 
         //go to photos view
-        ConstraintLayout photosViewButton = (ConstraintLayout) findViewById(R.id.constraintLayout15);
+        ConstraintLayout photosViewButton = findViewById(R.id.constraintLayout15);
         photosViewButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -64,7 +64,7 @@ public class Menu extends AppCompatActivity {
         });
 
         //close app button
-        ConstraintLayout closeAppButton = (ConstraintLayout) findViewById(R.id.constraintLayout14);
+        ConstraintLayout closeAppButton =  findViewById(R.id.constraintLayout14);
         closeAppButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -76,31 +76,35 @@ public class Menu extends AppCompatActivity {
     }
 
     public void openFamilyMemberDataActivity(){
-        Intent intent = new Intent(this, FamilyMemberData.class);
+        Intent intent = new Intent(this, ListFamilyMembersActivity.class);
         startActivity(intent);
     }
 
     public void openFamilyTreeActivity(){
-        Intent intent = new Intent(this, FamilyTree.class);
+        Intent intent = new Intent(this, FamilyTreeActivity.class);
         startActivity(intent);
     }
 
-    public void openCallenderActivity(){
-        Intent intent = new Intent(this, Timetable.class);
+    public void openCalendarActivity(){
+        Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
     }
 
     public void openMessagesActivity(){
-        Intent intent = new Intent(this, Messages.class);
+        Intent intent = new Intent(this, MessagesActivity.class);
         startActivity(intent);
     }
 
     public void openPhotosActivity(){
-        Intent intent = new Intent(this, Photos.class);
+        Intent intent = new Intent(this, PhotosActivity.class);
         startActivity(intent);
     }
 
+
+    //TODO logout not closeApp
     public void closeApp(){
         finishAffinity();
+        System.exit(0);
+
     }
 }
