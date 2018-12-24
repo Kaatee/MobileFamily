@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Timetable extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
 
     String items[] = new String[] {"urodziny Janiny", "rocznica slubu Kowalskich", "roczek Krzysia", "zjazd rodzinny"};
 
@@ -18,7 +18,7 @@ public class Timetable extends AppCompatActivity {
         setContentView(R.layout.activity_timetable);
 
 
-        ListView eventsListView = (ListView) findViewById(R.id.listView);
+        ListView eventsListView = findViewById(R.id.listView);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.photos_list_item,R.id.textView6, items);
         eventsListView.setAdapter(adapter);
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -31,7 +31,7 @@ public class Timetable extends AppCompatActivity {
 
 
     public void openEventPhotoActivity(String eventName){
-        Intent intent = new Intent(this, EventPhotos.class);
+        Intent intent = new Intent(this, EventPhotosActivity.class);
         Bundle dataBundle = new Bundle();
         dataBundle.putString("eventName", eventName);
         intent.putExtras(dataBundle);

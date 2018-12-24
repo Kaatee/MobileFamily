@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class FamilyMemberData extends AppCompatActivity {
+public class ListFamilyMembersActivity extends AppCompatActivity {
 
     String[] familyMembers = new String[] {"Janina Kowalska", "Jan Kowalski", "Kazimierz Nowak", "Katarzyna Jozwiak"};
     @Override
@@ -17,8 +17,8 @@ public class FamilyMemberData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_member_data);
 
-        ListView eventsListView = (ListView) findViewById(R.id.familyMembersList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.family_member_item,R.id.name, familyMembers);
+        ListView eventsListView =  findViewById(R.id.familyMembersList);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.family_member_item,R.id.name, familyMembers);
         eventsListView.setAdapter(adapter);
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -28,7 +28,7 @@ public class FamilyMemberData extends AppCompatActivity {
         });
 
 
-        Button addMemberButton = (Button) findViewById(R.id.button2);
+        Button addMemberButton = findViewById(R.id.button2);
         addMemberButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -40,7 +40,7 @@ public class FamilyMemberData extends AppCompatActivity {
     }
 
     public void openFamilyMemberDetails(String name){
-        Intent intent = new Intent(this, MemberDetails.class);
+        Intent intent = new Intent(this, MemberDetailsActivity.class);
         Bundle dataBundle = new Bundle();
         dataBundle.putString("name", name);
         intent.putExtras(dataBundle);
@@ -48,7 +48,7 @@ public class FamilyMemberData extends AppCompatActivity {
     }
 
     public void openAddFamilyMemberActivity(){
-        Intent intent = new Intent(this, AddFamilyMember.class);
+        Intent intent = new Intent(this, AddFamilyMemberActivity.class);
         startActivity(intent);
     }
 }
