@@ -1,0 +1,3 @@
+- szczegóły eventu w terminarzu
+- sortowanie listy członków rodziny, np. po nazwisku panienskim, po nazwisku
+- w danych czlonków rodziny mozliwosc przescia w męża/żonę i lista dzieci
