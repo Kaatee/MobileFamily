@@ -1,0 +1,13 @@
+TODO:
+
+- szczegóły eventu w terminarzu
+- sortowanie listy członków rodziny, np. po nazwisku panienskim, po nazwisku
+- w danych czlonków rodziny mozliwosc przescia w męża/żonę i lista dzieci
+- baza danych, mozliwosc dodawania danych czlonkow rodziny
+- przycisk dodaj -> przesunac w "uzupelnij dane nowego czlonka rodziny"
+- obsluga terminarza (zeby bo kliknieciu w date aktualizowala sie lista wydarzen)
+- wiadomosci (powinny sie pojawiac tylko dla opcji premium -> chyba ze jej nie robimy)
+- zdjecia jako bloby w bazie danych
+- listy zeby dziedziczyly z listactivity (jak sa takie basic)
+- zamienic wyjscie na wyloguj
+- zamockowanie pewnych rzeczy (np. logowanie) ?
