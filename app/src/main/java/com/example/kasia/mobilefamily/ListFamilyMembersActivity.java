@@ -37,6 +37,8 @@ public class ListFamilyMembersActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public void openFamilyMemberDetails(String name){

@@ -1,6 +1,8 @@
 package com.example.kasia.mobilefamily;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -72,6 +74,10 @@ public class MenuActivity extends AppCompatActivity {
                 closeApp();
             }
         });
+
+
+        SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
+        SQLiteDatabase db  =familyDataBaseHelper.getReadableDatabase();
 
     }
 
