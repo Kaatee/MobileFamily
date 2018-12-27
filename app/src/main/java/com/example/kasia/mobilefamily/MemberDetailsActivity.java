@@ -33,15 +33,11 @@ public class MemberDetailsActivity extends AppCompatActivity {
         TextView phoneNumbeText = findViewById(R.id.phoneNumberTextView);
         TextView emailText = findViewById(R.id.emailTextView);
         TextView weddingDateText = findViewById(R.id.weddingDateTextView);
-        TextView addressText = findViewById(R.id.weddingDateTextView);
+        TextView addressText = findViewById(R.id.addressTextView);
         TextView workPlaceText = findViewById(R.id.workplaceTextView);
         TextView dateOfDeathText = findViewById(R.id.dateOfDeathTextView);
+        TextView familyNameText = findViewById(R.id.familyNameTextView);
 
-/*
-
- telephone_number text not null , email text not null , address text not null , place_of_work text not null)";
-
-*/
 
         if(cursor.moveToNext()) {
             name.setText(cursor.getString(cursor.getColumnIndexOrThrow("name")) + " " + cursor.getString(cursor.getColumnIndexOrThrow("surname")));
@@ -49,7 +45,8 @@ public class MemberDetailsActivity extends AppCompatActivity {
             namedate.setText(cursor.getString(cursor.getColumnIndexOrThrow("date_of_name_day")));
             phoneNumbeText.setText(cursor.getString(cursor.getColumnIndexOrThrow("telephone_number")));
             emailText.setText(cursor.getString(cursor.getColumnIndexOrThrow("email")));
-            weddingDateText.setText("DOROBIC DO BAZY DANYCH");
+            weddingDateText.setText(cursor.getString(cursor.getColumnIndexOrThrow("wedding_date")));
+            familyNameText.setText(cursor.getString(cursor.getColumnIndexOrThrow("family_name")));
             addressText.setText(cursor.getString(cursor.getColumnIndexOrThrow("address")));
             workPlaceText.setText(cursor.getString(cursor.getColumnIndexOrThrow("place_of_work")));
             dateOfDeathText.setText(cursor.getString(cursor.getColumnIndexOrThrow("date_of_death")));

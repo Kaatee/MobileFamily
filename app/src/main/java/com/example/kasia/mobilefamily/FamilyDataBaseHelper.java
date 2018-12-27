@@ -15,8 +15,8 @@ public class FamilyDataBaseHelper extends SQLiteOpenHelper {
     // Database creation sql statement
    private static final String DB_EVENT_CREATE = "create table event( _id integer primary key AUTOINCREMENT,name text not null, desciption text , date text not null)";
    private static final String DB_PHOTO_CREATE =  "create table photo( _id integer primary key AUTOINCREMENT, place text , date text , event_id integer not null , content blob not null, FOREIGN KEY(event_id) REFERENCES event(_id))";
-   private static final String DB_PERSON_CREATE= "create table person( _id integer primary key AUTOINCREMENT, name text not null , surname text not null , date_of_birth text not null , " +
-           " date_of_death text not null, date_of_name_day text not null, telephone_number text not null , email text not null , address text not null , place_of_work text not null)";
+   private static final String DB_PERSON_CREATE= "create table person( _id integer primary key AUTOINCREMENT, name text not null , surname text not null , date_of_birth text , " +
+           " date_of_death text, date_of_name_day text, telephone_number text , email text , address text , place_of_work text  , family_name text , wedding_date text)";
    private static final String DB_RELATIONSHIP_CREATE= "create table relationship(_id integer not null  ,name text not null , person1_id integer not null , person2_id integer not null," +
            "start_date text not null , description text not null, primary key(_id,person1_id,person2_id), foreign key (person1_id) references person(_id),foreign key (person2_id) references person(_id))";
 

@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MobileFamily</string>
     <string-array name="sortingValues">
-        <item>Imie</item>
         <item>Nazwisko</item>
+        <item>Imie</item>
         <item>Data urodzenia</item>
+        <item>Nazwisko panienskie</item>
     </string-array>
 
 </resources>

@@ -130,7 +130,17 @@
                 android:layout_height="wrap_content"
                 android:text="data śmierci:"
                 app:layout_constraintBottom_toTopOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView23"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nazwisko rodowe:"
+                app:layout_constraintBottom_toTopOf="@+id/textView24"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -150,7 +160,7 @@
                 android:id="@+id/birthdateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/workplaceTextView"
+                app:layout_constraintBottom_toTopOf="@+id/namedateTextView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="8dp" />
 
@@ -159,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/phoneNumberTextView"
-                app:layout_constraintTop_toBottomOf="@+id/dateOfDeathTextView"
+                app:layout_constraintTop_toBottomOf="@+id/birthdateTextView"
                 tools:layout_editor_absoluteX="8dp" />
 
             <TextView
@@ -190,7 +200,7 @@
                 android:id="@+id/weddingDateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/workplaceTextView"
                 app:layout_constraintTop_toBottomOf="@+id/addressTextView"
                 tools:layout_editor_absoluteX="16dp" />
 
@@ -199,14 +209,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/dateOfDeathTextView"
-                app:layout_constraintTop_toBottomOf="@+id/birthdateTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/weddingDateTextView" />
 
             <TextView
                 android:id="@+id/dateOfDeathTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/namedateTextView"
+                app:layout_constraintBottom_toTopOf="@+id/familyNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/workplaceTextView" />
+
+            <TextView
+                android:id="@+id/familyNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateOfDeathTextView" />
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 

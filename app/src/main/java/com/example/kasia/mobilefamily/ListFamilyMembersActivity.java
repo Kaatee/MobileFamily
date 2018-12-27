@@ -60,6 +60,10 @@ public class ListFamilyMembersActivity extends AppCompatActivity {
                     sortBy="date_of_birth";
                 }
 
+                if(sortByStr.equals("Nazwisko panienskie")) {
+                    sortBy="family_name";
+                }
+
                 Cursor cursor = db.rawQuery("SELECT  * FROM person ORDER BY " + sortBy, null);
 
                 ListView eventsListView =  findViewById(R.id.familyMembersList);

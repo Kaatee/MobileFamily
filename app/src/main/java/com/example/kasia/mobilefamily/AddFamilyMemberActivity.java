@@ -1,6 +1,7 @@
 package com.example.kasia.mobilefamily;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
         EditText addressText = findViewById(R.id.addressText);
         EditText weddingDateText = findViewById(R.id.weddingDateText);
         EditText workPlaceText = findViewById(R.id.workPlaceText);
+        EditText familyNameText = findViewById(R.id.familyNameEditText);
 
         ContentValues familyMemberValues = new ContentValues();
         familyMemberValues.put("name", nameText.getText().toString());
@@ -44,9 +46,13 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
         familyMemberValues.put("email", emailText.getText().toString());
         familyMemberValues.put("address", addressText.getText().toString());
         familyMemberValues.put("place_of_work", workPlaceText.getText().toString());
-        familyMemberValues.put("name", nameText.getText().toString());
+        familyMemberValues.put("family_name", familyNameText.getText().toString());
+        familyMemberValues.put("wedding_date", weddingDateText.getText().toString());
 
         db.insert("person", null, familyMemberValues);
         Toast.makeText(this,"Dodano członka rodziny"+ nameText.getText().toString() ,Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, ListFamilyMembersActivity.class);
+        startActivity(intent);
     }
 }
