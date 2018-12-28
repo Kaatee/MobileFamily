@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context="com.example.kasia.mobilefamily.AddFamilyMemberActivity">
 
 
@@ -18,7 +19,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="Uzupałnij dane nowego członka rodziny"
+                android:textColor="@color/colorButtonsCorners"
                 android:textSize="25sp" />
 
             <LinearLayout
@@ -33,7 +38,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Imię:" />
+                    android:text="Imię:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/nameText"
@@ -61,7 +68,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Nazwisko:" />
+                    android:text="Nazwisko:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/surnameText"
@@ -89,7 +98,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Data urodzenia:" />
+                    android:text="Data urodzenia:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/dateOfBirthText"
@@ -116,7 +127,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Data imienin:" />
+                    android:text="Data imienin:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/nameDayDateText"
@@ -143,7 +156,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Data śmierci:" />
+                    android:text="Data śmierci:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/dateOfDeathText"
@@ -170,7 +185,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Email:" />
+                    android:text="Email:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/emailText"
@@ -198,7 +215,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Adres:" />
+                    android:text="Adres:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/addressText"
@@ -226,7 +245,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Nr telefonu:" />
+                    android:text="Nr telefonu:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/phoneNumberText"
@@ -254,7 +275,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Miejsce pracy:" />
+                    android:text="Miejsce pracy:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/workPlaceText"
@@ -282,14 +305,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="Data ślubu:" />
+                    android:text="Data ślubu:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/weddingDateText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="8dp"
                     android:ems="10"
+                    android:inputType="textPersonName"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -309,7 +335,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nazwisko panieńskie:" />
+                    android:layout_marginStart="8dp"
+                    android:text="Nazwisko panieńskie:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorButtonsCorners"/>
 
                 <EditText
                     android:id="@+id/familyNameEditText"
@@ -327,6 +356,11 @@
                 android:layout_marginStart="8dp"
                 android:onClick="addFamilyMember"
                 android:text="Dodaj"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rectangle_button"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
     </ScrollView>
