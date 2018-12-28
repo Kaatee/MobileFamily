@@ -102,7 +102,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void openPhotosActivity(){
-        Intent intent = new Intent(this, PhotosActivity.class);
+        Intent intent = new Intent(this, EventsListActivity.class);
         startActivity(intent);
     }
 
