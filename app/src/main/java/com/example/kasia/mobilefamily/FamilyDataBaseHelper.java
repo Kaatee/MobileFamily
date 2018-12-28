@@ -13,7 +13,7 @@ public class FamilyDataBaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database creation sql statement
-   private static final String DB_EVENT_CREATE = "create table event( _id integer primary key AUTOINCREMENT,name text not null, desciption text , date text not null)";
+   private static final String DB_EVENT_CREATE = "create table event( _id integer primary key AUTOINCREMENT,name text not null, description text , date text not null)";
    private static final String DB_PHOTO_CREATE =  "create table photo( _id integer primary key AUTOINCREMENT, place text , date text , event_id integer not null , content blob not null, FOREIGN KEY(event_id) REFERENCES event(_id))";
    private static final String DB_PERSON_CREATE= "create table person( _id integer primary key AUTOINCREMENT, name text not null , surname text not null , date_of_birth text , " +
            " date_of_death text, date_of_name_day text, telephone_number text , email text , address text , place_of_work text  , family_name text , wedding_date text)";

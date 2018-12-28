@@ -25,7 +25,10 @@
         <activity android:name=".EventPhotosActivity" />
         <activity android:name=".MemberDetailsActivity" />
         <activity android:name=".AddFamilyMemberActivity" />
-        <activity android:name=".MessageContentActivity"></activity>
+        <activity android:name=".MessageContentActivity"/>
+        <activity android:name=".AddEventActivity">
+
+        </activity>
     </application>
 
 </manifest>

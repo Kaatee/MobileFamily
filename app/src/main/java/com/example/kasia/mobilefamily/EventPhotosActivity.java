@@ -13,10 +13,10 @@ public class EventPhotosActivity extends AppCompatActivity {
 
         //getting valuesfrom bundle
         Bundle extras = getIntent().getExtras();
-        String eventName = extras.getString("eventName");
+        int eventId = extras.getInt("eventId");
 
         TextView textView = findViewById(R.id.textView7);
-        textView.setText("Zdjęcia z wydarzenia: " + eventName);
+        textView.setText("Zdjęcia z wydarzenia: " + eventId);
 
 
     }
