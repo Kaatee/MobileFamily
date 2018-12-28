@@ -22,7 +22,7 @@ import java.util.GregorianCalendar;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    //String items[] = new String[] {"urodziny Janiny", "rocznica slubu Kowalskich", "roczek Krzysia", "zjazd rodzinny"};
+
     private Calendar calendar=new GregorianCalendar();
     private     ArrayList<Integer> ids = new ArrayList();
 
@@ -94,7 +94,7 @@ public class CalendarActivity extends AppCompatActivity {
     }
 
     public void openEventPhotoActivity(int eventId){
-        Intent intent = new Intent(this, EventPhotosActivity.class);
+        Intent intent = new Intent(this, EventDetailsActivity.class);
         Bundle dataBundle = new Bundle();
         dataBundle.putInt("eventId", eventId);
         intent.putExtras(dataBundle);

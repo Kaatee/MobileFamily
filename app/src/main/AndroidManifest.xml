@@ -21,13 +21,13 @@
         <activity android:name=".FamilyTreeActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".MessagesActivity" />
-        <activity android:name=".PhotosActivity" />
+        <activity android:name=".EventsListActivity" />
         <activity android:name=".EventPhotosActivity" />
         <activity android:name=".MemberDetailsActivity" />
         <activity android:name=".AddFamilyMemberActivity" />
         <activity android:name=".MessageContentActivity"/>
-        <activity android:name=".AddEventActivity">
-
+        <activity android:name=".AddEventActivity"/>
+        <activity android:name=".EventDetailsActivity">
         </activity>
     </application>
 
