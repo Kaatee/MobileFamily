@@ -17,26 +17,30 @@ public class EventDetailsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         int eventId = extras.getInt("eventId");
 
-        TextView textView = findViewById(R.id.textView27);
-        textView.setText(showEventDetails(eventId));
+        showEventDetails(eventId);
     }
 
-    private String showEventDetails(int eventID){
-        String result="Event: ";
+    private void showEventDetails(int eventID){
         SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
         SQLiteDatabase db =familyDataBaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT  * FROM event where _id is " + String.valueOf(eventID), null);
 
         if (cursor.moveToFirst()){
             do{
-                result += cursor.getString(cursor.getColumnIndex("name"));
-                result +=", data: " + cursor.getString(cursor.getColumnIndex("date"));
-                // do what ever you want here
+                String result = "Wydarzenie: " + cursor.getString(cursor.getColumnIndex("name"));
+                TextView textView = findViewById(R.id.textView27);
+                textView.setText(result);
+
+                String date = cursor.getString(cursor.getColumnIndex("date"));
+                TextView textViewDate = findViewById(R.id.eventDateTextView);
+                textViewDate.setText(date);
+
+                String description = cursor.getString(cursor.getColumnIndex("description"));
+                TextView textViewDescription = findViewById(R.id.eventDescTextView);
+                textViewDescription.setText(description);
             }while(cursor.moveToNext());
         }
         cursor.close();
 
-
-        return result;
     }
 }

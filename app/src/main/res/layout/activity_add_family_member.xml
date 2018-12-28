@@ -354,11 +354,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:layout_marginStart="8dp"
-                android:onClick="addFamilyMember"
-                android:text="Dodaj"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rectangle_button"
+                android:onClick="addFamilyMember"
+                android:text="Dodaj"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 app:layout_constraintTop_toTopOf="parent" />
