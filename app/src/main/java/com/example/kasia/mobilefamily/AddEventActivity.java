@@ -33,11 +33,13 @@ public class AddEventActivity extends AppCompatActivity {
 
         EditText nameText = findViewById(R.id.nameEditText);
         EditText descriptionText = findViewById(R.id.descriptionEditText);
+        EditText placeText = findViewById(R.id.placeEditText);
 
         ContentValues eventValues = new ContentValues();
         eventValues.put("name", nameText.getText().toString());
         eventValues.put("description", descriptionText.getText().toString());
         eventValues.put("date", date);
+        eventValues.put("place", placeText.getText().toString());
 
         db.insert("event", null, eventValues);
         Toast.makeText(this,"Dodano event pomyślnie" ,Toast.LENGTH_LONG).show();
