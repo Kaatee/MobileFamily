@@ -35,12 +35,6 @@ public class EventDetailsActivity extends AppCompatActivity {
     }
 
     private void deleteEvent(int eventID) {
-        //String photoQuery = "DELETE FROM photo WHERE event_id IS " + eventID;
-        //String eventQuery = "DELETE FROM event WHERE _id IS " + eventID;
-
-        //Log.d("---", photoQuery);
-        //Log.d("---", eventQuery);
-
         SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
         SQLiteDatabase db = familyDataBaseHelper.getReadableDatabase();
 

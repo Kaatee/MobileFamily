@@ -159,6 +159,14 @@ public class ListFamilyMembersActivity extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String surname = cursor.getString(cursor.getColumnIndexOrThrow("surname"));
             nameText.setText(name + " "+surname);
+
+
+            TextView extraText = view.findViewById(R.id.extraTextView);
+            String familyName = cursor.getString(cursor.getColumnIndexOrThrow("family_name"));
+            if(familyName.length() == 0) familyName="-";
+            String dateOfBirth = cursor.getString(cursor.getColumnIndexOrThrow("date_of_birth"));
+            if(dateOfBirth.length() == 0) dateOfBirth="-";
+            extraText.setText("ur. " + dateOfBirth +", z domu " + familyName);
         }
     }
 }
