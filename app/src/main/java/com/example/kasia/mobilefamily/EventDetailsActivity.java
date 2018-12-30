@@ -34,20 +34,20 @@ public class EventDetailsActivity extends AppCompatActivity {
         }));
     }
 
-    private void deleteEvent(int eventID){
-        String photoQuery = "DELETE FROM photo WHERE event_id IS " + eventID;
-        String eventQuery = "DELETE FROM event WHERE _id IS " + eventID;
+    private void deleteEvent(int eventID) {
+        //String photoQuery = "DELETE FROM photo WHERE event_id IS " + eventID;
+        //String eventQuery = "DELETE FROM event WHERE _id IS " + eventID;
 
-        Log.d("---", photoQuery);
-        Log.d("---", eventQuery);
+        //Log.d("---", photoQuery);
+        //Log.d("---", eventQuery);
 
         SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
-        SQLiteDatabase db =familyDataBaseHelper.getReadableDatabase();
+        SQLiteDatabase db = familyDataBaseHelper.getReadableDatabase();
 
-        db.rawQuery(photoQuery, null);
-        db.rawQuery(eventQuery, null);
+        db.delete("photo", "_id = " + eventID, null);
+        db.delete("event", "_id = " + eventID, null);
 
-        Toast.makeText(this,"Wydarzenie zostało usunięte pomyślnie", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Wydarzenie zostało usunięte pomyślnie", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
