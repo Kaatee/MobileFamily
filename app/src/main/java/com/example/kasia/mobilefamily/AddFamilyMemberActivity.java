@@ -1,9 +1,11 @@
 package com.example.kasia.mobilefamily;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
@@ -35,6 +37,11 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
 
     private EditText mDisplayDeathDate;
     private DatePickerDialog.OnDateSetListener mDeathDateSetListener;
+
+    private static final int SET_URI = 0;
+
+    int memberID;
+    String uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +159,43 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
         Toast.makeText(this,"Dodano członka rodziny"+ nameText.getText().toString() ,Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, ListFamilyMembersActivity.class);
+
+        String query = "SELECT * FROM person WHERE name = '"+  nameText.getText().toString() + "' AND surname = '" + sureNameText.getText().toString()+"'";
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        memberID = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("_id")));
+        saveImgDatabase(uri);
         startActivity(intent);
+    }
+
+    public void addFamilyMemberPhoto(View view){
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("*/*");
+        startActivityForResult(intent, SET_URI);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SET_URI && resultCode == Activity.RESULT_OK){
+            uri = data.getData().toString();
+        }
+    }
+
+
+    public void saveImgDatabase(String uri){
+        SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
+        SQLiteDatabase db =familyDataBaseHelper.getReadableDatabase();
+
+        ContentValues imageValues = new ContentValues();
+
+        imageValues.put("member_id", memberID);
+        imageValues.put("uri", uri);
+        db.insert("photo", null, imageValues);
+
+        Toast.makeText(this,"Dodano obraz do bazy",Toast.LENGTH_LONG).show();
+        db.close();
     }
 }

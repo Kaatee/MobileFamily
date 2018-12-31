@@ -6,6 +6,10 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,10 +19,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ListFamilyMembersActivity extends AppCompatActivity {
@@ -121,8 +128,6 @@ public class ListFamilyMembersActivity extends AppCompatActivity {
                 openAddFamilyMemberActivity();
             }
         });
-
-
     }
 
 
@@ -167,6 +172,36 @@ public class ListFamilyMembersActivity extends AppCompatActivity {
             String dateOfBirth = cursor.getString(cursor.getColumnIndexOrThrow("date_of_birth"));
             if(dateOfBirth.length() == 0) dateOfBirth="-";
             extraText.setText("ur. " + dateOfBirth +", z domu " + familyName);
+
+            //MemberDetailsActivity.showPhoto(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("_id"))));
+            ImageView img = view.findViewById(R.id.memberPhotoImageView);
+
+            SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(context);
+            SQLiteDatabase db =familyDataBaseHelper.getReadableDatabase();
+            int memberId = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("_id")));
+            Cursor cursor2 = db.rawQuery("SELECT  * FROM  photo where member_id is  " + memberId, null);
+
+            if (cursor2 !=null ) {
+                if (cursor2.moveToFirst()) {
+                    do {
+                        try{
+                            InputStream inputStream = context.getContentResolver().openInputStream(Uri.parse(cursor2.getString(cursor2.getColumnIndexOrThrow("uri"))));
+                            Bitmap bmp = BitmapFactory.decodeStream(inputStream);
+                            BitmapDrawable ob = new BitmapDrawable(getResources(), bmp);
+                            img.setBackground(ob);
+                        }
+                        catch (FileNotFoundException e){
+                            e.printStackTrace();
+                        }
+                    } while (cursor.moveToNext());
+                }
+            }
+
+            cursor2.close();
+            db.close();
         }
+
     }
+
+
 }
