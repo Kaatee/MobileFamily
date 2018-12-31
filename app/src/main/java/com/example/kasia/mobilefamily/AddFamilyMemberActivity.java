@@ -193,9 +193,12 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
 
         imageValues.put("member_id", memberID);
         imageValues.put("uri", uri);
-        db.insert("photo", null, imageValues);
 
-        Toast.makeText(this,"Dodano obraz do bazy",Toast.LENGTH_LONG).show();
+        if(uri!=null) {
+            db.insert("photo", null, imageValues);
+            Toast.makeText(this,"Dodano obraz do bazy",Toast.LENGTH_LONG).show();
+        }
+
         db.close();
     }
 }
