@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +30,6 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
     private EditText mDisplayBirthDate;
     private DatePickerDialog.OnDateSetListener mBirthDateSetListener;
 
-    private EditText mDisplayNamedayDate;
-    private DatePickerDialog.OnDateSetListener mNamedayDateSetListener;
-
     private EditText mDisplayWeddingDate;
     private DatePickerDialog.OnDateSetListener mWeddingDateSetListener;
 
@@ -41,12 +39,26 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
     private static final int SET_URI = 0;
 
     int memberID;
+    int person1ID;
     String uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_family_member);
+
+        try{
+            Bundle extras = getIntent().getExtras();
+            person1ID = extras.getInt("id");
+        }
+        catch (Exception e){
+
+        }
+
+        LinearLayout linLay1 = findViewById(R.id.relationTypeLayout);
+        LinearLayout linLay2 = findViewById(R.id.relativesLayout);
+        linLay1.setVisibility(View.GONE);
+        linLay2.setVisibility(View.GONE);
 
         //birthday menage
         mDisplayBirthDate = findViewById(R.id.dateOfBirthText);

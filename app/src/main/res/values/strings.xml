@@ -6,5 +6,15 @@
         <item>Data urodzenia</item>
         <item>Nazwisko panienskie</item>
     </string-array>
+    <string-array name="relationTypesValues">
+        <item>brat/siostra</item>
+        <item>rodzic</item>
+        <item>kuzyn/kuzynka</item>
+        <item>dziadek/babcia</item>
+        <item>pra-dziadek/babcia</item>
+        <item>pra-pra-dziadek/babcia</item>
+        <item>wuja/ciocia</item>
+        <item>mąż/żona</item>
+    </string-array>
 
 </resources>

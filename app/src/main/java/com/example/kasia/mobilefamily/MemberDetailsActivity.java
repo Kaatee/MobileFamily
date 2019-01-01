@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class MemberDetailsActivity extends AppCompatActivity {
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MemberDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_member_details);
 
         Bundle extras = getIntent().getExtras();
-        int id = extras.getInt("id");
+        id = extras.getInt("id");
 
 
         SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
@@ -73,7 +74,8 @@ public class MemberDetailsActivity extends AppCompatActivity {
     }
 
     public void openAddFamilyMemberActivity(){
-        Intent intent = new Intent(this, AddFamilyMemberActivity.class);
+        Intent intent = new Intent(this, AddRelativeActivity.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 
