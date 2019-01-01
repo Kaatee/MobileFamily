@@ -15,6 +15,26 @@
         <item>pra-pra-dziadek/babcia</item>
         <item>wuja/ciocia</item>
         <item>mąż/żona</item>
+        <item>dziecko</item>
+        <item>wnuk/wnuczka</item>
+        <item>pra-wnuk/wnuczka</item>
+        <item>pra-pra-wnuk/wnuczka</item>
+        <item>siostrzeniec/siostrzenica</item>
+    </string-array>
+    <string-array name="relationTypesCorrespondingValues">
+        <item>brat/siostra</item>
+        <item>dziecko</item>
+        <item>kuzyn/kuzynka</item>
+        <item>wnuk/wnuczka</item>
+        <item>pra-wnuk/wnuczka</item>
+        <item>pra-pra-wnuk/wnuczka</item>
+        <item>siostrzeniec/siostrzenica</item>
+        <item>mąż/żona</item>
+        <item>rodzic</item>
+        <item>dziadek/babcia</item>
+        <item>pra-dziadek/babcia</item>
+        <item>pra-pra-dziadek/babcia</item>
+        <item>wuja/ciocia</item>
     </string-array>
 
 </resources>

@@ -1,7 +1,8 @@
 ﻿TODO:
 
-- w danych czlonków rodziny mozliwosc przescia w męża/żonę i lista dzieci
-- baza danych, mozliwosc dodawania danych czlonkow rodziny
+- dodać sensowne id w relationship, ogarnąć start date i description
+- ogarnąć roamiar listView w liście krewnych danej osoby (żeby się ładnie dopasowywała)
+- możliwość wyświetlenia danych o krewnym danej osoby po kliknięciu w nią
 - wiadomosci (powinny sie pojawiac tylko dla opcji premium -> chyba ze jej nie robimy)
 - zdjecia jako bloby w bazie danych
 - zamienic wyjscie na wyloguj

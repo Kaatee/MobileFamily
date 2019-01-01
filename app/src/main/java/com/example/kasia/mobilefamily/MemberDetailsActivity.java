@@ -1,5 +1,6 @@
 package com.example.kasia.mobilefamily;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,14 +12,20 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MemberDetailsActivity extends AppCompatActivity {
     int id;
@@ -71,6 +78,17 @@ public class MemberDetailsActivity extends AppCompatActivity {
                 openAddFamilyMemberActivity();
             }
         });
+
+
+        //fetch all relatives list
+        Cursor relativesCursor = db.rawQuery("SELECT  * FROM relationship WHERE person1_id = " + id, null);
+        MemberDetailsActivity.MyCursorAdapter myAdapter;
+        ListView listView = findViewById(R.id.relativesList);
+        if(relativesCursor!=null) {
+            Log.d("---","Tworze adapter");
+            myAdapter = new MemberDetailsActivity.MyCursorAdapter(this, relativesCursor);
+            listView.setAdapter(myAdapter);
+        }
     }
 
     public void openAddFamilyMemberActivity(){
@@ -107,6 +125,72 @@ public class MemberDetailsActivity extends AppCompatActivity {
         cursor.close();
         db.close();
 
+
+    }
+
+
+    public class MyCursorAdapter extends CursorAdapter {
+        public MyCursorAdapter(Context context, Cursor cursor) {
+            super(context, cursor, 0);
+        }
+
+        // The newView method is used to inflate a new view and return it,
+        // you don't bind any data to the view at this point.
+        @Override
+        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+            return LayoutInflater.from(context).inflate(R.layout.family_member_item, parent, false);
+        }
+
+        // The bindView method is used to bind all data to a given view
+        // such as setting the text on a TextView.
+        @Override
+        public void bindView(View view, Context context, Cursor cursor) {
+            //create personId - nameOfRelationship pair
+            Pair<Integer, String> pair ;
+            Integer id1 = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("person2_id")));
+            String name1 =cursor.getString(cursor.getColumnIndexOrThrow("name")) ;
+            Log.d("---para",name1 + " id:"+String.valueOf(id1));
+            pair = new Pair(id1, name1);
+
+            //fetch person whose id is person2_id data (name,surname, photo)
+            SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(context);
+            SQLiteDatabase db =familyDataBaseHelper.getReadableDatabase();
+            Cursor cursor2 = db.rawQuery("SELECT  * FROM  person where _id = " + pair.first, null);
+
+            TextView nameText = view.findViewById(R.id.nameTextView);
+            cursor2.moveToNext();
+            String name = cursor2.getString(cursor2.getColumnIndexOrThrow("name"));
+            String surname = cursor2.getString(cursor2.getColumnIndexOrThrow("surname"));
+            nameText.setText(name + " " + surname);
+
+
+            TextView extraText = view.findViewById(R.id.extraTextView);
+            extraText.setText("pokrewienstwo: " + pair.second);
+
+            //MemberDetailsActivity.showPhoto(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("_id"))));
+            ImageView img = view.findViewById(R.id.memberPhotoImageView);
+
+            Cursor cursor3 = db.rawQuery("SELECT  * FROM  photo where member_id is  " + pair.first, null);
+
+            if (cursor3 !=null ) {
+                if (cursor3.moveToFirst()) {
+                    do {
+                        try{
+                            InputStream inputStream = context.getContentResolver().openInputStream(Uri.parse(cursor3.getString(cursor3.getColumnIndexOrThrow("uri"))));
+                            Bitmap bmp = BitmapFactory.decodeStream(inputStream);
+                            BitmapDrawable ob = new BitmapDrawable(getResources(), bmp);
+                            img.setBackground(ob);
+                        }
+                        catch (FileNotFoundException e){
+                            e.printStackTrace();
+                        }
+                    } while (cursor3.moveToNext());
+                }
+            }
+            cursor2.close();
+            cursor3.close();
+            db.close();
+        }
 
     }
 
