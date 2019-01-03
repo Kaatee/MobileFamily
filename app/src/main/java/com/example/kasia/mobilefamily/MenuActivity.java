@@ -109,8 +109,13 @@ public class MenuActivity extends AppCompatActivity {
 
     //TODO logout not closeApp
     public void closeApp(){
-        finishAffinity();
-        System.exit(0);
-
+        try {
+            this.deleteDatabase("MobileFamilyDB");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
