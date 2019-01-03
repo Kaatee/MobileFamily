@@ -13,8 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
+
 
 public class EventPhotosActivity extends AppCompatActivity {
 
@@ -24,10 +24,8 @@ public class EventPhotosActivity extends AppCompatActivity {
     private PhotoGalleryAdapter adapter;
     private ArrayList<String> photosUri;
 
-
     private ArrayList<String> prepareData(){
-
-        ArrayList<String> theimage = new ArrayList<>();
+        ArrayList<String> photosUriTmp = new ArrayList<>();
         SQLiteOpenHelper familyDataBaseHelper = new FamilyDataBaseHelper(this);
         SQLiteDatabase db =familyDataBaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT  * FROM  photo where event_id is  " + eventId, null);
@@ -36,7 +34,7 @@ public class EventPhotosActivity extends AppCompatActivity {
             if (cursor.moveToFirst()) {
                 do {
                     try{
-                       theimage.add(cursor.getString(cursor.getColumnIndexOrThrow("uri")));
+                       photosUriTmp .add(cursor.getString(cursor.getColumnIndexOrThrow("uri")));
                     }
                     catch (Exception e){
                         e.printStackTrace();
@@ -47,16 +45,20 @@ public class EventPhotosActivity extends AppCompatActivity {
 
         cursor.close();
         db.close();
-        return theimage;
+        return  photosUriTmp;
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_photos);
 
+
         Bundle extras = getIntent().getExtras();
         eventId = extras.getInt("eventId");
+
 
         TextView textView = findViewById(R.id.textView7);
         textView.setText(showEventDetails(eventId));
@@ -68,7 +70,7 @@ public class EventPhotosActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         photosUri= prepareData();
-        adapter = new PhotoGalleryAdapter(getApplicationContext(), photosUri);
+        adapter = new PhotoGalleryAdapter(getApplicationContext(), photosUri,eventId);
         recyclerView.setAdapter(adapter);
 
 
@@ -91,10 +93,9 @@ public class EventPhotosActivity extends AppCompatActivity {
         db.insert("photo", null, imageValues);
 
         Toast.makeText(this,"Dodano obraz do bazy",Toast.LENGTH_LONG).show();
-        db.close();
         photosUri.add(uri);
         adapter.notifyDataSetChanged();
-
+        db.close();
 
     }
 
