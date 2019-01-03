@@ -54,8 +54,19 @@ public class AddRelativeActivity extends AddFamilyMemberActivity {
         long relationNo = spinner.getSelectedItemId();
         EditText nameText = findViewById(R.id.nameText);
 
+        Cursor cursorId = db.rawQuery("SELECT  count(*) as counter from relationship", null);
+        int currentId=0;
+        if (cursorId .moveToFirst()){
+            do{
+                currentId= cursorId .getInt(cursorId .getColumnIndex("counter"));
+                currentId+=1;
+            }while(cursorId.moveToNext());
+        }
+        cursorId.close();
+
+
         ContentValues relationValues = new ContentValues();
-        relationValues.put("_id", 1);
+        relationValues.put("_id", currentId);
         relationValues.put("name", relationType);
         relationValues.put("person1_id", person1ID);
         relationValues.put("person2_id",memberID);
@@ -72,7 +83,7 @@ public class AddRelativeActivity extends AddFamilyMemberActivity {
         String nameCor = items[(int)relationNo];
 
         ContentValues correspondingRelation = new ContentValues();
-        correspondingRelation.put("_id", 1);
+        correspondingRelation.put("_id", currentId+1);
         correspondingRelation.put("name", nameCor);
         correspondingRelation.put("person1_id", memberID);
         correspondingRelation.put("person2_id",person1ID);
