@@ -84,6 +84,16 @@ public class MemberDetailsActivity extends AppCompatActivity {
         Cursor relativesCursor = db.rawQuery("SELECT  * FROM relationship WHERE person1_id = " + id, null);
         MemberDetailsActivity.MyCursorAdapter myAdapter;
         ListView listView = findViewById(R.id.relativesList);
+
+        ListView list = findViewById(R.id.relativesList);
+        int listLen = relativesCursor.getCount();
+
+        final float scale = getResources().getDisplayMetrics().density;
+        int listHeight = (int) ((90 * listLen*scale)+0.5f);
+
+        ViewGroup.LayoutParams params = list.getLayoutParams();
+        params.height = listHeight;
+
         if(relativesCursor!=null) {
             Log.d("---","Tworze adapter");
             myAdapter = new MemberDetailsActivity.MyCursorAdapter(this, relativesCursor);
