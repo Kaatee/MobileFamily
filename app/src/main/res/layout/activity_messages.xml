@@ -11,23 +11,23 @@
         android:id="@+id/constraintLayout16"
         android:layout_width="368dp"
         android:layout_height="57dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/listView2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="352dp"
-            android:layout_height="0dp"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/groups"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Grupy"
                 android:textAlignment="center"
                 android:textSize="30sp"
@@ -41,8 +41,8 @@
                 android:id="@+id/people"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Osoby"
                 android:textAlignment="center"
                 android:textSize="30sp"
