@@ -115,7 +115,7 @@ public class MenuActivity extends AppCompatActivity {
         catch(Exception e){
             e.printStackTrace();
         }
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 }
