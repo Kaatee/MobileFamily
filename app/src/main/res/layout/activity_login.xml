@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="com.example.kasia.mobilefamily.MainActivity"
+    tools:context="com.example.kasia.mobilefamily.LoginActivity"
     tools:layout_editor_absoluteY="81dp">
 
 
@@ -90,13 +90,13 @@
                 android:textSize="20sp"
                 android:text="Login:"
                 android:textColor="@color/colorButtonsCorners"
-                app:layout_constraintEnd_toStartOf="@+id/editText"
+                app:layout_constraintEnd_toStartOf="@+id/edtUsername"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="29dp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/edtUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -125,13 +125,13 @@
                 android:textSize="20sp"
                 android:text="Hasło:"
                 android:textColor="@color/colorButtonsCorners"
-                app:layout_constraintEnd_toStartOf="@+id/editText2"
+                app:layout_constraintEnd_toStartOf="@+id/edtPassword"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="29dp" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/edtPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
