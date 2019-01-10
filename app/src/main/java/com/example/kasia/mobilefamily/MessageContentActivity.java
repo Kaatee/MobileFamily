@@ -7,8 +7,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,23 +19,21 @@ public class MessageContentActivity extends AppCompatActivity {
     private RecyclerView mMessageRecycler;
     private MessageListAdapter mMessageAdapter;
     private Context context=this;
+    private List<Message> messageList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_message_content);
-
-        Bundle extras = getIntent().getExtras();
-        String name = extras.getString("groupName");
-
-//        TextView text = findViewById(R.id.textView35);
-//        text.setText(name);
-
         setContentView(R.layout.activity_message_content);
+        Bundle extras = getIntent().getExtras();
+        //user
+        String name = extras.getString("userName");
+        TextView text = findViewById(R.id.userNameText);
+        text.setText(name);
 
-        //create naive message list
-        List<Message> messageList = new ArrayList<>();
-        messageList.add(new Message("wyslana wiadomosc",1 , System.currentTimeMillis()));
-        messageList.add(new Message("odebrana wiadomosc",2 , System.currentTimeMillis()));
+        //create naive(start) message list
+        messageList.add(new Message("Wysłana wiadomość - TEST",1 , returnCurrentTime()));
+        messageList.add(new Message("Odebrana wiadomość - TEST",2 , returnCurrentTime()));
 
         mMessageRecycler = findViewById(R.id.reyclerview_message_list);
         RecyclerView.LayoutManager layoutManager =new LinearLayoutManager(getApplicationContext());
@@ -40,8 +41,20 @@ public class MessageContentActivity extends AppCompatActivity {
         mMessageAdapter = new MessageListAdapter(context, messageList);
         mMessageRecycler.setAdapter(mMessageAdapter);
 
-
     }
 
+    public void sendMessage(View view){
+       TextView message= findViewById(R.id.edittext_chatbox);
+       String messageContent = message.getText().toString();
+       messageList.add(new Message(messageContent,1,returnCurrentTime()));
+       messageList.add(new Message("Potwierdzam odbiór wiadomości",2,returnCurrentTime()));
+       message.setText(null);
+       mMessageAdapter.notifyDataSetChanged();
+    }
+
+
+    private String returnCurrentTime(){
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
 
 }

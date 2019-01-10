@@ -26,7 +26,6 @@ public class MessageListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-
         return mMessageList.size();
     }
 
@@ -34,17 +33,14 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     // Determines the appropriate ViewType according to the sender of the message.
     @Override
     public int getItemViewType(int position) {
-        Message message =  mMessageList.get(position);
+        Message message = mMessageList.get(position);
 
-        if (message.getSender()==1) {
+        if (message.getSender() == 1) {
             // If the current user is the sender of the message
-
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
-
             // If some other user sent the message
             return VIEW_TYPE_MESSAGE_RECEIVED;
-
         }
 
     }
@@ -61,7 +57,6 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_received, parent, false);
             return new ReceivedMessageHolder(view);
         }
-
         return null;
     }
 
@@ -69,7 +64,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     // Passes the message object to a ViewHolder so that the contents can be bound to UI.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-       Message message =  mMessageList.get(position);
+        Message message = mMessageList.get(position);
 
         switch (holder.getItemViewType()) {
             case VIEW_TYPE_MESSAGE_SENT:
@@ -81,24 +76,20 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     }
 
 
-
     //inner class sent message
     public class SentMessageHolder extends RecyclerView.ViewHolder {
         TextView messageText, timeText;
 
         SentMessageHolder(View itemView) {
             super(itemView);
-
-            messageText =  itemView.findViewById(R.id.text_message_body);
-            timeText =  itemView.findViewById(R.id.text_message_time);
+            messageText = itemView.findViewById(R.id.text_message_body);
+            timeText = itemView.findViewById(R.id.text_message_time);
         }
 
         void bind(Message message) {
-           messageText.setText(message.getMessage());
-
-//
-//            // Format the stored timestamp into a readable String using method.
-          // timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
+            messageText.setText(message.getMessage());
+            //Format the stored timestamp into a readable String using method.
+            timeText.setText(message.getCreatedAt());
         }
     }
 
@@ -111,20 +102,15 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             messageText = itemView.findViewById(R.id.text_message_body);
             timeText = itemView.findViewById(R.id.text_message_time);
             nameText = itemView.findViewById(R.id.text_message_name);
-
         }
 
         void bind(Message message) {
             messageText.setText(message.getMessage());
-
             // Format the stored timestamp into a readable String using method.
-            //timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
-           nameText.setText(String.valueOf(message.getSender()));
-
-            // Insert the profile image from the URL into the ImageView.
-           // Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
+            timeText.setText(message.getCreatedAt());
+            nameText.setText(String.valueOf(message.getSender()));
         }
     }
 
 
-    }
+}

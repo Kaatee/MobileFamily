@@ -8,14 +8,26 @@
     android:layout_height="match_parent"
     tools:context="com.example.kasia.mobilefamily.MessagesActivity">">
 
+    <TextView
+        android:id="@+id/userNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reyclerview_message_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="435dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-    />
+        app:layout_constraintTop_toBottomOf="@+id/userNameText" />
 
     <!-- A horizontal line between the chatbox and RecyclerView -->
     <View
@@ -52,14 +64,15 @@
 
         <Button
             android:id="@+id/button_chatbox_send"
-            android:text="SEND"
-            android:textSize="14dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
             android:layout_width="64dp"
             android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
             android:gravity="center"
-            android:layout_gravity="bottom" />
+            android:onClick="sendMessage"
+            android:text="SEND"
+            android:textSize="14dp" />
 
     </LinearLayout>
 

@@ -1,14 +1,13 @@
 package com.example.kasia.mobilefamily;
 
 
-
 public class Message {
 
-        String message;
-        int sender;
-        long createdAt;
+        private String message;
+        private int sender;
+        private String createdAt;
 
-        public Message (String message,int sender , long createdAt){
+        public Message (String message,int sender , String createdAt){
             this.message=message;
             this.sender=sender;
             this.createdAt=createdAt;
@@ -22,7 +21,7 @@ public class Message {
         return sender;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 }
