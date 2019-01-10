@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -111,7 +112,7 @@ public class MessagesActivity extends AppCompatActivity {
     public void openMessager(String groupName){
         Intent intent = new Intent(this, MessageContentActivity.class);
         Bundle dataBundle = new Bundle();
-        dataBundle.putString("groupName", groupName);
+        dataBundle.putString("userName", groupName);
         intent.putExtras(dataBundle);
         startActivity(intent);
 
