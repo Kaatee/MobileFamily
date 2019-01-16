@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -23,20 +24,20 @@ import java.util.GregorianCalendar;
 
 public class AddFamilyMemberActivity extends AppCompatActivity {
 
-    private EditText mDisplayBirthDate;
-    private DatePickerDialog.OnDateSetListener mBirthDateSetListener;
+    protected EditText mDisplayBirthDate;
+    protected DatePickerDialog.OnDateSetListener mBirthDateSetListener;
 
-    private EditText mDisplayWeddingDate;
-    private DatePickerDialog.OnDateSetListener mWeddingDateSetListener;
+    protected EditText mDisplayWeddingDate;
+    protected DatePickerDialog.OnDateSetListener mWeddingDateSetListener;
 
-    private EditText mDisplayDeathDate;
-    private DatePickerDialog.OnDateSetListener mDeathDateSetListener;
+    protected EditText mDisplayDeathDate;
+    protected DatePickerDialog.OnDateSetListener mDeathDateSetListener;
 
-    private static final int SET_URI = 0;
+    protected static final int SET_URI = 0;
 
-    int memberID;
-    int person1ID;
-    String uri;
+    protected int memberID;
+    protected int person1ID;
+    protected String uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,11 +117,10 @@ public class AddFamilyMemberActivity extends AppCompatActivity {
         mWeddingDateSetListener = myOnDataSetDMY(mDisplayWeddingDate);
     }
 
-    private DatePickerDialog.OnDateSetListener myOnDataSetDMY(final EditText myeditText){
+    protected DatePickerDialog.OnDateSetListener myOnDataSetDMY(final EditText myeditText){
         DatePickerDialog.OnDateSetListener xx = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month=month+1;
                 myeditText.setText(format(new GregorianCalendar(year,month,day)));
             }
         };

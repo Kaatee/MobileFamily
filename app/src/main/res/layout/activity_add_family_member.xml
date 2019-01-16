@@ -243,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -303,7 +303,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="phone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -375,24 +375,23 @@
             <LinearLayout
                 android:id="@+id/familyNameLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    android:text="Nazwisko panieńskie:"
-                    android:textSize="20sp"
-                    android:textColor="@color/colorButtonsCorners"/>
+                    android:layout_weight="1"
+                    android:text="Nazw rodowe:"
+                    android:textColor="@color/colorButtonsCorners"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/familyNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName" />
             </LinearLayout>
