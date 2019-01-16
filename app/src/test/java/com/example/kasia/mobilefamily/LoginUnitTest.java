@@ -8,16 +8,27 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class LoginUnitTest {
 
-    @Test
-    void validateLoginCredentials() {
 
-        LoginActivity myObjectUnderTest = new LoginActivity();
+        @Test
+        public void validateLoginCredentials() {
 
-        // ...when the string is returned from the object under test...
-        Boolean result = myObjectUnderTest.validate("user","user");
+            LoginActivity myObjectUnderTest = new LoginActivity();
+            Boolean result;
 
-        // ...then the result should be the expected one.
-        assertTrue(result);
+            result = myObjectUnderTest.validate("user","user");
+            assertTrue(result);
+
+            result = myObjectUnderTest.validate("user123","user");
+            assertFalse(result);
+
+            result = myObjectUnderTest.validate("","");
+            assertFalse(result);
+
+            result = myObjectUnderTest.validate("user","");
+            assertFalse(result);
+
+            result = myObjectUnderTest.validate("","user");
+            assertFalse(result);
+        }
+
     }
-
-}
