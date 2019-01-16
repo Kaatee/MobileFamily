@@ -20,14 +20,23 @@ public class MessageContentActivity extends AppCompatActivity {
     private MessageListAdapter mMessageAdapter;
     private Context context=this;
     private List<Message> messageList = new ArrayList<>();
+    private String name;
+    private int senderIdx=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_content);
         Bundle extras = getIntent().getExtras();
+        if (extras.size()==1){
+            name = extras.getString("userName");
+        }
+        else {
+            name = extras.getString("userName");
+            senderIdx = extras.getInt("userIdx");
+        }
         //user
-        String name = extras.getString("userName");
+
         TextView text = findViewById(R.id.userNameText);
         text.setText(name);
 
@@ -47,7 +56,7 @@ public class MessageContentActivity extends AppCompatActivity {
        TextView message= findViewById(R.id.edittext_chatbox);
        String messageContent = message.getText().toString();
        messageList.add(new Message(messageContent,1,returnCurrentTime()));
-       messageList.add(new Message("Potwierdzam odbiór wiadomości",2,returnCurrentTime()));
+       messageList.add(new Message("Potwierdzam odbiór wiadomości",senderIdx,returnCurrentTime()));
        message.setText(null);
        mMessageAdapter.notifyDataSetChanged();
     }

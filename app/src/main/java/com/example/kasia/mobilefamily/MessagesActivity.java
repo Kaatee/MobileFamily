@@ -16,10 +16,11 @@ import android.widget.TextView;
 
 public class MessagesActivity extends AppCompatActivity {
 
-    String[] groups = new String[] {"rodzeństwo", "bracia", "dziadki", "kuzynostwo","organizacja rocznicy"};
-    String[] people;
-    TextView groupsButton;
-    TextView peopleButton;
+    private String[] groups = new String[] {"rodzeństwo", "bracia", "dziadki", "kuzynostwo","organizacja rocznicy"};
+    private String[] people;
+    private int [] userIds;
+    private TextView groupsButton;
+    private TextView peopleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class MessagesActivity extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT  * FROM person", null);
         if(cursor!=null) {
             people = new String[cursor.getCount()];
+            userIds = new int[cursor.getCount()];
             cursor.moveToFirst();
 
             int i = 0;
@@ -70,6 +72,7 @@ public class MessagesActivity extends AppCompatActivity {
                 data += " ";
                 data += cursor.getString(cursor.getColumnIndexOrThrow("surname"));
                 people[i] = data;
+                userIds[i] = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
                 cursor.moveToNext();
                 i++;
             }
@@ -115,6 +118,14 @@ public class MessagesActivity extends AppCompatActivity {
         dataBundle.putString("userName", groupName);
         intent.putExtras(dataBundle);
         startActivity(intent);
+    }
 
+    public void openMessager(String userName,int userIdx){
+        Intent intent = new Intent(this, MessageContentActivity.class);
+        Bundle dataBundle = new Bundle();
+        dataBundle.putString("userName", userName);
+        dataBundle.putInt("userIdx", userIdx);
+        intent.putExtras(dataBundle);
+        startActivity(intent);
     }
 }
