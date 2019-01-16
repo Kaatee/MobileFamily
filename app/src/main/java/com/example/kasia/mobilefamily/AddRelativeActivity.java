@@ -1,10 +1,13 @@
 package com.example.kasia.mobilefamily;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Calendar;
 
 
 public class AddRelativeActivity extends AddFamilyMemberActivity {
@@ -27,6 +31,66 @@ public class AddRelativeActivity extends AddFamilyMemberActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.relationTypesValues, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+
+        //birthday menage
+        mDisplayBirthDate = findViewById(R.id.dateOfBirthText);
+        mDisplayBirthDate.setOnClickListener(new View.OnClickListener() {
+            DatePickerDialog.OnDateSetListener listener = mBirthDateSetListener;
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(AddRelativeActivity.this, R.style.Theme_AppCompat_Light_Dialog, mBirthDateSetListener, year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
+                dialog.show();
+            }
+        });
+
+        mBirthDateSetListener = myOnDataSetDMY(mDisplayBirthDate);
+
+
+        //deathdate menage
+        mDisplayDeathDate = findViewById(R.id.dateOfDeathText);
+        mDisplayDeathDate.setOnClickListener(new View.OnClickListener() {
+            DatePickerDialog.OnDateSetListener listener = mDeathDateSetListener;
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(AddRelativeActivity.this, R.style.Theme_AppCompat_Light_Dialog, mDeathDateSetListener, year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
+                dialog.show();
+            }
+        });
+
+        mDeathDateSetListener = myOnDataSetDMY(mDisplayDeathDate);
+
+
+        //wedding date menage
+        mDisplayWeddingDate = findViewById(R.id.weddingDateText);
+        mDisplayWeddingDate.setOnClickListener(new View.OnClickListener() {
+            DatePickerDialog.OnDateSetListener listener = mWeddingDateSetListener;
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(AddRelativeActivity.this, R.style.Theme_AppCompat_Light_Dialog, mWeddingDateSetListener, year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
+                dialog.show();
+            }
+        });
+
+        mWeddingDateSetListener = myOnDataSetDMY(mDisplayWeddingDate);
 
     }
     @Override
